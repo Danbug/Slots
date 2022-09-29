@@ -91,7 +91,11 @@ int main(int argc, char * argv[]) {
 				break;
 			}
 			case 3:{
-				
+				printf("000, 111, 222, 333, 444 = 250$\n");
+				printf("5XX = 350$, 55X = 500$, 555 = 700$ \n");
+				printf("7XX = 450$ , 77X = 700$\n");
+				printf("777 = WIN\n");
+				printf("666 = LOSE\n");
 				break;
 			}
 			case 0: {
@@ -185,13 +189,13 @@ void generateCombination(int * combination) {
 }
 
 void printCombination(int * combination) {
-	printf("\n\t-------\n");
+	printf("\n\t-------  o\n");
 	printf("\t| ");
 	for (int i = 0; i < sizeOfRoll; i++) {
 		printf("%d", combination[i]);
 	}
 	printf(" |./\n");
 	printf("\t-------\n");
-	printf("\t|~~~~~|");
+	printf("\t|     |");
 	printf("\n");
 }
