@@ -30,16 +30,21 @@ void printCombination(int * combination);
 */
 
 int main(int argc, char * argv[]) {
+	srand(time(NULL));
 	int money = 5000;
-	const int costOfRoll = 100;
+	const int costOfRoll = 150;
 	int * combination = calloc(3,sizeof(int));
+	if(combination == NULL){
+		printf("Memory creation error!\n");
+		return (-1);
+	}
 	int menu = 0;
 	while(money > costOfRoll) {
 		printf("----------------------------------------------\n");
 		printf("1) Roll one time\n");
 		printf("2) Roll multiple times\n");
 		printf("3) Print win combinations\n");
-		printf("---------------------------------Yur balance is %d\n",money);
+		printf("--------------------------Your balance is %4d\n",money);
 		scanf("%d",&menu);
 		switch(menu) {
 			case 1: {
@@ -72,7 +77,7 @@ int main(int argc, char * argv[]) {
 				} else {
 					for(int i = 0 ; i < amountOfRolls; i++) {
 						money-= costOfRoll;
-						sleep(1);
+						//sleep(1); // compatibility problem
 						generateCombination(combination);
 						printCombination(combination);
 						if (isJackPot(combination) == true) {
@@ -181,7 +186,6 @@ int getMoneyWon(int * combination) {
 }
 
 void generateCombination(int * combination) {
-	srand(time(NULL));
 	int i = 0;
 	for (i = 0; i < 3; i++) {
 		combination[i] = rand() % 8;
